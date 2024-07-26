@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { Navbar } from "./layout/navbar/Navbar";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
+  //   const theme = useTheme();
+
+  const [mode, setMode] = useState<"light" | "dark">("light");
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#A2D2FF", // Couleur principale
+        dark: "#415a77",
+        light: "#d5dee8",
+      },
+      secondary: {
+        main: "#eff0ee",
+        dark: "#e0e1dd",
+        light: "#f9f9f8",
+        // Couleur secondaire
+      },
+      background: {
+        default: mode === "dark" ? "#CDB4DB" : "#CDB4DB",
+      },
+      mode,
+
+      // Autres options de la palette comme error, warning, etc.
+    },
+    typography: {
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+      fontSize: 14,
+      // Autres configurations de la typographie
+    },
+    // Vous pouvez ajouter d'autres configurations comme shadows, spacing, etc.
+  });
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Navbar setMode={setMode} />
+      <Outlet />
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
