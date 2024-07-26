@@ -42,7 +42,7 @@ export const Navbar: React.FC<Props> = ({ setMode }) => {
             <Typography variant="h6">Portfolio</Typography>
           </Stack>
           <Stack direction={"row"} alignItems={"center"} spacing={2}>
-            <Link  sx={{textDecoration: "none"}} href="/home">
+            <Link  sx={{textDecoration: "none"}} href="/">
               <Typography variant="subtitle1" color={"initial"}>
                 Home
               </Typography>

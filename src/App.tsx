@@ -3,7 +3,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { createTheme, CssBaseline, Stack, ThemeProvider } from "@mui/material";
 import { Navbar } from "./layout/navbar/Navbar";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
@@ -44,6 +44,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+
       <Navbar setMode={setMode} />
       <Outlet />
     </ThemeProvider>
